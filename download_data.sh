@@ -29,3 +29,5 @@ mv VOCdevkit/VOC2012/SegmentationClassAug/* VOCdevkit/VOC2012/SegmentationClass/
 rm -r VOCdevkit/VOC2012/__MACOSX
 rm SegmentationClassAug.zip
 rm VOCtrainval_11-May-2012.tar
+
+cd ..

@@ -21,27 +21,74 @@ class ConvDecoder(nn.Module):
         super().__init__()
 
         # Initialize convolutional layers.
-        self.convolutional = nn.ModuleList()
-        for i in range(2, -1, -1):
-            self.convolutional.append(
+        self.convolutional = nn.ModuleList(
+            [
                 RotatingLayers.RotatingConvTranspose2d(
                     opt,
-                    channel_per_layer[i + 1],
-                    channel_per_layer[i + 1],
+                    channel_per_layer[3],
+                    channel_per_layer[3],
                     kernel_size=3,
                     output_padding=1,
                     padding=1,
                     stride=2,
-                )  # Scales up features map size, e.g. from 4x4 to 8x8.
-            )
+                ),  # Scales up features map size, e.g. from 4x4 to 8x8.
+                RotatingLayers.RotatingConv2d(
+                    opt,
+                    channel_per_layer[3],
+                    channel_per_layer[2],
+                    kernel_size=3,
+                    padding=1,
+                ),
+                RotatingLayers.RotatingConvTranspose2d(
+                    opt,
+                    channel_per_layer[2],
+                    channel_per_layer[2],
+                    kernel_size=3,
+                    output_padding=1,
+                    padding=1,
+                    stride=2,
+                ),
+                RotatingLayers.RotatingConv2d(
+                    opt,
+                    channel_per_layer[2],
+                    channel_per_layer[1],
+                    kernel_size=3,
+                    padding=1,
+                ),
+            ]
+        )
 
+        if opt.input.dino_processed:
+            self.convolutional.append(
+                RotatingLayers.RotatingConvTranspose2d(
+                    opt,
+                    channel_per_layer[1],
+                    channel_per_layer[1],
+                    kernel_size=3,
+                    output_padding=1,
+                    padding=1,
+                    stride=2,
+                )
+            )
             self.convolutional.append(
                 RotatingLayers.RotatingConv2d(
                     opt,
-                    channel_per_layer[i + 1],
-                    channel_per_layer[i],
+                    channel_per_layer[1],
+                    channel_per_layer[0],
                     kernel_size=3,
                     padding=1,
+                ),
+            )
+        else:
+            self.convolutional.append(
+                RotatingLayers.RotatingConvTranspose2d(
+                    opt,
+                    channel_per_layer[1],
+                    channel_per_layer[0],
+                    kernel_size=3,
+                    output_padding=1,
+                    padding=1,
+                    stride=2,
                 )
             )
 

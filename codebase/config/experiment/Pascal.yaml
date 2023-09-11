@@ -1,0 +1,29 @@
+# @package _global_
+
+input:
+  dataset: 2
+  load_path: datasets/VOCdevkit/VOC2012
+
+  num_objects_per_img: 3
+
+  image_size: [ 14, 14 ]  # Shape corresponds to output feature map size of DINO model.
+  channel: 768
+
+  dino_processed: True
+
+
+model:
+  hidden_dim: 128  # Base channel dimension of convolutional layers.
+  linear_dim: 256  # Feature dimension of linear layer.
+
+  rotation_dimensions: 10
+
+
+training:
+  steps: 30000  # How many times do we train on a single batch?
+  weight_decay: 1e-6
+
+
+evaluation:
+  mask_overlap: 0  # If 1: Mask overlapping object areas while clustering orientations.
+  smooth_labels: True  # Smooth out predicted labels when resized.

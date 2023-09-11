@@ -1,0 +1,29 @@
+# @package _global_
+
+input:
+  dataset: 0
+
+  load_path: datasets/RotatingFeatures_4Shapes
+  file_name: 4Shapes_RGBD
+
+  image_size: [ 32, 32 ]
+  channel: 3
+
+  num_objects_per_img: 4
+  add_depth_channel: True
+  num_rand_colors: 5  # How many random colors to sample and use across objects.
+
+
+model:
+  hidden_dim: 64  # Base channel dimension of convolutional layers.
+  linear_dim: 128  # Feature dimension of linear layer.
+
+  rotation_dimensions: 8
+
+
+training:
+  steps: 100000  # How many times do we train on a single batch?
+
+
+evaluation:
+  mask_overlap: 1  # If 1: Mask overlapping object areas while clustering orientations.

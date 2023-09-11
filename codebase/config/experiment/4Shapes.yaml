@@ -1,0 +1,27 @@
+# @package _global_
+
+input:
+  dataset: 0
+
+  load_path: datasets/RotatingFeatures_4Shapes
+  file_name: 4Shapes
+
+  image_size: [ 32, 32 ]
+  channel: 1
+
+  num_objects_per_img: 4
+
+
+model:
+  hidden_dim: 32  # Base channel dimension of convolutional layers.
+  linear_dim: 64  # Feature dimension of linear layer.
+
+  rotation_dimensions: 8
+
+
+training:
+  steps: 100000  # How many times to train on a single batch?
+
+
+evaluation:
+  mask_overlap: 1  # If 1: Mask overlapping object areas while clustering orientations.

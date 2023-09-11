@@ -1,0 +1,32 @@
+seed: 1
+
+defaults:
+  - _self_  # Override values within this file with values in selected files.
+
+
+input:
+  batch_size: 64
+  dino_processed: False
+
+
+training:
+  val_idx: 0  # x > 0: validate every x steps; otherwise, no validation.
+
+  learning_rate: 1e-3
+  learning_rate_schedule: 1  # 0 - constant lr; 1 - linear warm-up.
+  warmup_steps: 500
+  weight_decay: 0
+  gradient_clip: 0.1  # x > 0 clipping gradient norm to given value; otherwise, no clipping.
+
+  print_idx: 5000  # x > 0: print metrics every x steps; otherwise, no printing.
+
+
+evaluation:
+  magnitude_mask_threshold: 0.1  # Features with magnitudes below this threshold are masked out during evaluation.
+
+
+hydra:
+  run:
+    dir: ./outputs/
+
+

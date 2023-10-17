@@ -58,7 +58,7 @@ When using this code, please cite our paper:
 @article{lowe2023rotating,
   title={Rotating Features for Object Discovery},
   author={L{\"o}we, Sindy and Lippe, Phillip and Locatello, Francesco and Welling, Max},
-  journal={arXiv preprint arXiv:2306.00600},
+  journal={Advances in Neural Information Processing Systems (NeurIPS)},
   year={2023}
 }
 ```

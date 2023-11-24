@@ -1,6 +1,6 @@
 # Rotating Features for Object Discovery
 
-We propose Rotating Features - features that express object affiliation through their orientation. 
+Our proposed Rotating Features learn to represent object affiliation via their orientation on real-world data without labels. 
 We achieve this by extending standard features by an extra dimension across the entire architecture.
 We then set up the layer structure in such a way that the Rotating Features’ magnitudes learn to represent the presence
 of features, while their orientations learn to represent object affiliation.
